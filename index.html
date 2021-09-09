@@ -42,11 +42,24 @@
 </br>
 <h1>Hur har du implementet en CI pipeline i GitHub actions på ett eksisterende projekt, vilka steg har du gått igenom?</h1>
     <ul>
-      <li>skapade en work flo fil</li>
-      <li>Aws 355.66 USD</li>
-      <li>Google 586 USD</li>
-      <li>inleed.se 2988 SEK https://inleed.se/serverhotell/vps/</li>
+      <li>skapade en work flow</li>
+      <li>la till YAML file</li>
+      <li>definerade vilken steps som ska köras i YAML file</li>
+      <li>sedan pushade koden/vps/</li>
  </ul> 
 <h1>Beskrivning din GitHub action workflow YAML fil.</h1>
+</br>
+<p>YAML filen består av följande delar</p>
+ <ul>
+      <li>name: namnet på workflow som ska visas /li>
+      <li>on: när triggas jobb work flow</li>
+      <li>jobs: grupper alla samlar alla jobs</li>
+      <li>build:</li>
+     <li>runs-on: vilken miljö ska man köra, Windows eller Linux </li>
+     <li>steps: alla steps som kollar dåliga version som har fel</li>
+     <li>uses: actions/checkout@v2 den tar senaste version av din kon och läger den i runner</li>
+      <li>- uses: actions/setup-node@v1 laddar ner senaste versin av dotnet</li>
+      <li>run:</li>
+ </ul> 
 </body>
 </html>
