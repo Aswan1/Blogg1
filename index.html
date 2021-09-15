@@ -61,5 +61,29 @@
       <li>- uses: actions/setup-node@v1 laddar ner senaste versin av dotnet</li>
       <li>run:</li>
  </ul> 
+</br>
+
+<h1>Blogg 3</h1>
+<h1>Vad har in installerat lokalt / Github</h1>
+<p> Docker</p>
+
+<h1> Hur har ni fått applikationen att kör i en container </h1>
+<p>Jag har fick den och köra i en container men det gick inte och köra den via consolen.
+Det gick inte heller och starta den via docker desktop.</p>
+
+<h1> Beskriv din docker fil </h1>
+<p> Min docker fil består av : </p> 
+
+<ul>
+      <li>FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build, här är imagen som den kommer att utgå ifrån /li>
+      <li>WORKDIR /app här skapar katalogen app i roten av filsystemet inuti imagen </li>
+      <li>COPY publish . här kopierar innehållet i katalogen publish där vår webbapplikation ligger till nuvarande katalog i imagen (d.v.s. /app)</li>
+      <li>ENTRYPOINT ["dotnet", "SimpleWebHalloWorld.dll"]  definierar vilket kommando som ska köras som standard när en container körs från den här imagen</li>     
+ </ul> 
+
+
 </body>
 </html>
+
+ </ul> 
+  </br>
