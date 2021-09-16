@@ -3,16 +3,17 @@
 <html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8" />
-    <title></title>
+    <title>Aswan Blogg</title>
 </head>
 <body>
-    <h1>Blogg 1</h1>
-    <h1>Vad är molnet?</h1>
+  <div>  
+  <h1>Min Blogg Om Molnet</h1>
+    <h3>Vad är molnet?</h3>
     <p>Molenet är en samling IT tjänster som tillhanshålla över internet. och vad byteder detta? Jo det betyder att vi behöver inte köpa fysiska server längre</p>
    
     </br>
     
-    <h1>Vilka för delar och nackdelar kan molnet introducera?</h1>
+    <h3>Vilka för delar och nackdelar kan molnet introducera?</h3>
     <h3>Fördelar</h3>
     <ul>
       <li><p>En fördel med molnet är att vi slipper en stor del av ansvaret av den fysiska hårdvåra och alla stora molntjänst levrantör har bra garinti om säkerhet och downtime</p></li>
@@ -28,26 +29,28 @@
     </ul>
     </br>
     
-<h1>Din konklussion av eran pris undersökning</h1>
-        <ul>
+<h3>Din konklussion av eran pris undersökning</h3>
+      <ul>
       <li>azure $358.66</li>
       <li>Aws 355.66 USD</li>
       <li>Google 586 USD</li>
       <li>inleed.se 2988 SEK https://inleed.se/serverhotell/vps/</li>
  </ul> 
   </br>
-<h1>Blogg 2</h1>
-<h1>Vad är en CI pipline</h1>
+</div>
+<div>
+<h1>Min Blogg Om Pipline</h1>
+<h3>Vad är en CI pipline</h3>
 <p>CI pipeline automatiserar mjukvara utvecklings process och bygger koden plus att kan köra automatiska testen kontinuerligt. CI pipline hjälper att vi kommer till produktion snabare</p>
 </br>
-<h1>Hur har du implementet en CI pipeline i GitHub actions på ett eksisterende projekt, vilka steg har du gått igenom?</h1>
+<h3>Hur har du implementet en CI pipeline i GitHub actions på ett eksisterende projekt, vilka steg har du gått igenom?</h3>
     <ul>
       <li>skapade en work flow</li>
       <li>la till YAML file</li>
       <li>definerade vilken steps som ska köras i YAML file</li>
       <li>sedan pushade koden/vps/</li>
  </ul> 
-<h1>Beskrivning din GitHub action workflow YAML fil.</h1>
+<h3>Beskrivning din GitHub action workflow YAML fil.</h3>
 </br>
 <p>YAML filen består av följande delar</p>
  <ul>
@@ -62,25 +65,44 @@
      <li>run:</li>
  </ul> 
 </br>
+</div>
+<div>
+<h1>Min Blogg Om Container</h1>
+<h3>Vad har in installerat lokalt / Github</h3>
+<p> Jag har installerat Docker desktop och GitHub desktop men jag använder inte GitHub desktop </p>
 
-<h1>Blogg 3 Container</h1>
-<h1>Vad har in installerat lokalt / Github</h1>
-<p> Docker</p>
-
-<h1> Hur har ni fått applikationen att kör i en container </h1>
+<h3> Hur har ni fått applikationen att kör i en container </h3>
 <p>Jag har fick den och köra i en container men det gick inte och köra den via consolen.
 Det gick inte heller och starta den via docker desktop.</p>
 
-<h2> Beskriv din docker fil </h2>
+<h3> Beskriv din docker fil </h3>
+<code>
+  <span>FROM mcr.microsoft.com/dotnet/aspnet:3.1 AS base</span>
+  <span>WORKDIR /app</span>
+  <span>FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build</span>
+  <span>WORKDIR /src</span>
+  <span>COPY ["SimpleWebHalloWorld.csproj", "."]</span>
+  <span>RUN dotnet restore "./SimpleWebHalloWorld.csproj"</span> 
+  <span>COPY . .</span>
+  <span>WORKDIR "/src/."</span>
+  <span>RUN dotnet build "SimpleWebHalloWorld.csproj" -c Release -o /app/build</span>
+  <span>FROM build AS publish</span>
+  <span>RUN dotnet publish "SimpleWebHalloWorld.csproj" -c Release -o /app/publish</span>
+  <span>FROM base AS final</span>
+  <span>WORKDIR /app</span>
+  <span>COPY --from=publish /app/publish .</span>
+  <span>ENTRYPOINT ["dotnet", "SimpleWebHalloWorld.dll"]</span>
+</code>
 
-
-<ul>
+  <ul>
       <li>FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build, här är imagen som den kommer att utgå ifrån /li>
       <li>WORKDIR /app här skapar katalogen app i roten av filsystemet inuti imagen </li>
       <li>COPY publish . här kopierar innehållet i katalogen publish där vår webbapplikation ligger till nuvarande katalog i imagen (d.v.s. /app)</li>
+      <li>RUN - Används för att köra kommandon i operativsystem så som linux, windows etc.</li>
       <li>ENTRYPOINT ["dotnet", "SimpleWebHalloWorld.dll"]  definierar vilket kommando som ska köras som standard när en container körs från den här imagen</li>     
  </ul> 
-
+ <h3>Beskriv din github pipeline</h3>
+</div>
 
 </body>
 </html>
