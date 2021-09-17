@@ -72,36 +72,25 @@
 <p> Jag har installerat Docker desktop och GitHub desktop men jag använder inte GitHub desktop </p>
 
 <h3> Hur har ni fått applikationen att kör i en container </h3>
-<p>Jag har fick den och köra i en container men det gick inte och köra den via consolen.
-Det gick inte heller och starta den via docker desktop.</p>
+<p>Efter att ha klonat ner repot “SimpleWebHalloWorld” så skapade jag två filer <code>Dockerfile docker-compose</code></p>
+  <ul><li> Jag har fått den och köra med docker-compose i en container. </li>
+    <li> Jag har inte fått och den funka via docker filen det gick inte köra den via consolen.
+  Det gick inte heller och starta den via docker desktop. </br>Jag har testat och byta port numer hjälpte inte heller. Tog bort allt och deployade igen.
+ Jag ser att container finns och den kör men kan inte öppna den i webläsare<li> 
 
 <h3> Beskriv din docker fil </h3>
-<code>
-  <span>FROM mcr.microsoft.com/dotnet/aspnet:3.1 AS base</span>
-  <span>WORKDIR /app</span>
-  <span>FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build</span>
-  <span>WORKDIR /src</span>
-  <span>COPY ["SimpleWebHalloWorld.csproj", "."]</span>
-  <span>RUN dotnet restore "./SimpleWebHalloWorld.csproj"</span> 
-  <span>COPY . .</span>
-  <span>WORKDIR "/src/."</span>
-  <span>RUN dotnet build "SimpleWebHalloWorld.csproj" -c Release -o /app/build</span>
-  <span>FROM build AS publish</span>
-  <span>RUN dotnet publish "SimpleWebHalloWorld.csproj" -c Release -o /app/publish</span>
-  <span>FROM base AS final</span>
-  <span>WORKDIR /app</span>
-  <span>COPY --from=publish /app/publish .</span>
-  <span>ENTRYPOINT ["dotnet", "SimpleWebHalloWorld.dll"]</span>
-</code>
-
-  <ul>
+<img src="img/dockerimg.PNG" class="img-responsive" alt=""> </div>
+<div>
+<ul>
       <li>FROM mcr.microsoft.com/dotnet/sdk:3.1 AS build, här är imagen som den kommer att utgå ifrån /li>
       <li>WORKDIR /app här skapar katalogen app i roten av filsystemet inuti imagen </li>
       <li>COPY publish . här kopierar innehållet i katalogen publish där vår webbapplikation ligger till nuvarande katalog i imagen (d.v.s. /app)</li>
       <li>RUN - Används för att köra kommandon i operativsystem så som linux, windows etc.</li>
       <li>ENTRYPOINT ["dotnet", "SimpleWebHalloWorld.dll"]  definierar vilket kommando som ska köras som standard när en container körs från den här imagen</li>     
  </ul> 
+</div>
  <h3>Beskriv din github pipeline</h3>
+ <img src="img/pipline.PNG" class="img-responsive" alt="">
 </div>
 
 </body>
